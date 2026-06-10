@@ -33,6 +33,11 @@ This project is configured for a GitHub Pages user site at `https://sayeed211410
    npm run deploy
    ```
 
+### Automatic deployment
+
+- GitHub Actions now deploys the site on every push to `main`.
+- In GitHub, go to **Settings > Pages** and set **Source** to **GitHub Actions**.
+
 ### Firebase checklist
 
 - Enable **Email/Password** and **Google** sign-in in Firebase Authentication.
