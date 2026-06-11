@@ -46,6 +46,6 @@ export default async function handler(req, res) {
     res.status(200).json({ text: responseText });
   } catch (error) {
     console.error('API Error:', error);
-    res.status(500).json({ error: 'Failed to process chat request on the server.' });
+    res.status(500).json({ error: `Gemini API Error: ${error.message}` });
   }
 }
