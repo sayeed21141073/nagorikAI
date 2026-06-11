@@ -80,7 +80,7 @@ const ChatbotInterface = ({ initialMessage }) => {
         <Bot size={24} className="bot-icon" />
         <div>
           <h2>Nagorik AI Assistant</h2>
-          <span className="status-text">Official Government Source</span>
+          <span className="status-text">get Authenticated information from official government source</span>
         </div>
       </div>
       

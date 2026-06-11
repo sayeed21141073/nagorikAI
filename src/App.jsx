@@ -6,6 +6,7 @@ import './App.css';
 
 function App() {
   const [initialQuery, setInitialQuery] = useState('');
+  const [showConsent, setShowConsent] = useState(true);
 
   const handleServiceClick = (serviceTitle) => {
     setInitialQuery(`I need help with my ${serviceTitle}.`);
@@ -13,6 +14,12 @@ function App() {
 
   return (
     <div className="app-layout">
+      {showConsent && (
+        <div className="consent-banner">
+          <p>We collect no cookies. Your privacy is respected.</p>
+          <button className="consent-btn" onClick={() => setShowConsent(false)}>Accept</button>
+        </div>
+      )}
       <div className="background-shapes">
         <div className="shape shape-1"></div>
         <div className="shape shape-2"></div>
@@ -28,6 +35,11 @@ function App() {
           <ChatbotInterface initialMessage={initialQuery} />
         </section>
       </main>
+      
+      <footer className="app-footer">
+        <p>2026 Copyright © MD. SAYEED IBNE ZAMAN</p>
+        <p>Email: <a href="mailto:sayeedibne.devops@gmail.com">sayeedibne.devops@gmail.com</a></p>
+      </footer>
     </div>
   );
 }
