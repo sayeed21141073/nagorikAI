@@ -11,13 +11,13 @@ export const processUserQuery = async (query, history = []) => {
       }),
     });
 
-    if (!response.ok) {
-      throw new Error(`API error: ${response.status}`);
-    }
+    const data = await response.json().catch(() => null);
 
-    const data = await response.json();
+    if (!response.ok) {
+      throw new Error((data && data.error) ? data.error : `API error: ${response.status}`);
+    }
     
-    if (data.error) {
+    if (data && data.error) {
       throw new Error(data.error);
     }
     
@@ -25,7 +25,7 @@ export const processUserQuery = async (query, history = []) => {
   } catch (error) {
     console.error('API Error:', error);
     return {
-      text: 'Sorry, I am having trouble connecting to the backend servers right now. Please try again later.',
+      text: `⚠️ **System Notice**: ${error.message}`,
     };
   }
 };

@@ -19,7 +19,8 @@ export default async function handler(req, res) {
     const { message, history } = req.body;
     
     // In Vercel, env vars are accessed via process.env
-    const apiKey = process.env.VITE_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
+    const HACKATHON_API_KEY = "AIzaSyCtBRnbO_BKbFPSPaxJ_ZH-CMuIGAWF9VY";
+    const apiKey = process.env.VITE_GEMINI_API_KEY || process.env.GEMINI_API_KEY || HACKATHON_API_KEY;
 
     if (!apiKey) {
       return res.status(500).json({ error: 'API Key not configured on the server.' });
