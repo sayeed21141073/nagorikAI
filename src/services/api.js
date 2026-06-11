@@ -1,10 +1,14 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-let apiKey = import.meta.env.VITE_GEMINI_API_KEY?.trim();
-let genAI = apiKey ? new GoogleGenerativeAI(apiKey) : null;
+// Hardcoding the API key for the hackathon demo since GitHub Pages is a static host without a backend.
+// Note: In a production app, this should be moved to a secure backend server.
+const HACKATHON_API_KEY = "AIzaSyCtBRnbO_BKbFPSPaxJ_ZH-CMuIGAWF9VY"; 
+
+let apiKey = import.meta.env.VITE_GEMINI_API_KEY?.trim() || HACKATHON_API_KEY;
+let genAI = new GoogleGenerativeAI(apiKey);
 const MODEL_NAME = 'gemini-2.5-flash';
 
-export const hasApiKey = () => !!genAI;
+export const hasApiKey = () => true;
 
 export const setApiKey = (key) => {
   apiKey = key.trim();
