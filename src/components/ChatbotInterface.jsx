@@ -29,12 +29,14 @@ const ChatbotInterface = ({ initialMessage }) => {
     setIsTyping(true);
 
     try {
-      // Format history for Gemini (ignoring the first bot welcome message if needed, but we'll send it)
-      // Note: The welcome message was created locally, so we map the entire history.
-      const history = messages.map(msg => ({
-        role: msg.sender === 'bot' ? 'model' : 'user',
-        parts: [{ text: msg.text }]
-      }));
+      // Format history for Gemini. The API requires history to start with a 'user' role.
+      // We filter out the initial welcome message (id: 1) to satisfy this requirement.
+      const history = messages
+        .filter(msg => msg.id !== 1)
+        .map(msg => ({
+          role: msg.sender === 'bot' ? 'model' : 'user',
+          parts: [{ text: msg.text }]
+        }));
 
       const response = await processUserQuery(text, history);
       const botMessage = {
