@@ -40,7 +40,23 @@ export default async function handler(req, res) {
       },
     });
 
-    const result = await chatSession.sendMessage(message);
+    let result;
+    let retries = 3;
+    while (retries > 0) {
+      try {
+        result = await chatSession.sendMessage(message);
+        break; // Success, exit retry loop
+      } catch (err) {
+        if (err.message && err.message.includes('503') && retries > 1) {
+          console.warn('503 error from Google. Retrying...');
+          retries--;
+          await new Promise(res => setTimeout(res, 2000)); // Wait 2 seconds before retry
+        } else {
+          throw err; // Not a 503 or out of retries
+        }
+      }
+    }
+
     const responseText = result.response.text();
 
     res.status(200).json({ text: responseText });
