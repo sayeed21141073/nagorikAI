@@ -1,45 +1,47 @@
-# React + Vite
+# Nagorik AI - National Citizen Services Integration Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Nagorik AI** is a unified citizen-facing AI assistant that seamlessly integrates the government services of Bangladesh. This project was built for the **Gemini API Developer Competition / XPRIZE Hackathon** hosted on Devpost.
 
-Currently, two official plugins are available:
+## 🚀 The Problem
+Government services are fragmented across hundreds of websites, offices, portals, and agencies. Citizens often struggle to find correct information, understand requirements, complete forms correctly, and track application status. This creates long processing times, unnecessary visits, high support burden, and frustration.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 💡 Our Solution
+Nagorik AI acts as a unified AI layer across all government services. It provides a conversational interface where citizens can ask questions in plain English or Bangla (e.g., *"How do I renew my passport?"* or *"My NID is lost. What should I do?"*) and receive accurate, official, step-by-step guidance instantly.
 
-## React Compiler
+## ✨ Features
+- **Citizen First:** Explains government services in simple, accessible language.
+- **Official Sources Only:** Guides citizens through application processes, fees, and requirements using simulated official information.
+- **Multilingual Support:** Understands and responds in English and Bangla.
+- **Strict Guardrails:** Answers *only* questions related to Bangladesh government services (NID, Passports, Tax, Land, Utilities, Health, etc.). Politely declines off-topic or general knowledge queries.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
+* **Frontend:** React, Vite, Vanilla CSS
+* **Icons & UI:** Lucide React, React Markdown
+* **AI Engine:** Google Gemini 2.5 Flash (`gemini-2.5-flash`) via the `@google/generative-ai` SDK
+* **Backend:** Vercel Serverless Functions (`api/chat.js`)
+* **Hosting & Deployment:** Vercel
 
-## Expanding the ESLint configuration
+## 🧠 How it uses Gemini API
+The application uses a React frontend to capture user queries and displays them in a chatbot interface. These queries are sent to a Vercel serverless function (`/api/chat.js`), which interacts directly with the **Gemini 2.5 Flash** model. 
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+We utilize Gemini's `systemInstruction` capabilities to initialize a robust `SYSTEM_PROMPT` that strictly defines its persona as the *National Citizen Services Integration Platform for Bangladesh*. It enforces guidelines such as relying only on official sources, providing step-by-step guidance in Markdown, and safely handling out-of-bounds requests.
 
-## GitHub Pages Deployment
-
-This project is configured for a GitHub Pages user site at `https://sayeed21141073.github.io`.
-
-### First-time setup
-
-1. Install dependencies:
-
+## ⚙️ Local Setup
+1. Clone the repository.
+2. Install dependencies:
    ```bash
    npm install
    ```
-
-2. Build and publish:
-
+3. Set up your environment variables by creating a `.env.local` file with your Gemini API Key:
+   ```env
+   VITE_GEMINI_API_KEY=your_api_key_here
+   ```
+4. Run the development server:
    ```bash
-   npm run deploy
+   npm run dev
    ```
 
-### Automatic deployment
-
-- GitHub Actions now deploys the site on every push to `main`.
-- In GitHub, go to **Settings > Pages** and set **Source** to **GitHub Actions**.
-
-### Firebase checklist
-
-- Enable **Email/Password** and **Google** sign-in in Firebase Authentication.
-- Add `sayeed21141073.github.io` to **Authentication > Settings > Authorized domains**.
-- Keep `localhost`, `prizex-9a626.firebaseapp.com`, and `prizex-9a626.web.app` authorized for local development.
+## 🗺️ Future Roadmap
+- Integration with live national API portals (e.g., Bangladesh National Digital Architecture e-Service Bus).
+- Voice interaction for low-literacy and visually impaired users.
+- Regional dialect support across Bangladesh.

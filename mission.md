@@ -1,5 +1,6 @@
-# Mission
+# Mission - Nagorik AI
 
+*This document outlines the core vision and mission of Nagorik AI, our submission for the Gemini API Developer Hackathon on Devpost.*
 ## Vision
 
 Build the world's most accessible AI-powered citizen platform that enables every person in Bangladesh to access any government service through natural conversation in Bangla and English.
