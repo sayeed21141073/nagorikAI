@@ -35,8 +35,10 @@ function App() {
           <ChatbotInterface initialMessage={initialQuery} />
         </section>
       </main>
-      
       <footer className="app-footer">
+        <p style={{ marginBottom: '10px', color: 'var(--text-primary)', fontWeight: '500' }}>
+          This platform is exclusively dedicated to serving the citizens and residents of Bangladesh.
+        </p>
         <p>2026 Copyright © MD. SAYEED IBNE ZAMAN</p>
         <p>Email: <a href="mailto:sayeedibne.devops@gmail.com">sayeedibne.devops@gmail.com</a></p>
       </footer>
