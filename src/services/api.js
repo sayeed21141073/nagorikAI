@@ -26,7 +26,7 @@ let chatSession = null;
 export const processUserQuery = async (query) => {
   if (!genAI) {
     return {
-      text: "⚠️ **System Notice**: The `VITE_GEMINI_API_KEY` is not configured in the `.env.local` file. Please provide your Google AI Studio API key.",
+      text: "Error: No API key found. Please refresh the page and enter your API key in the Welcome screen.",
     };
   }
 
