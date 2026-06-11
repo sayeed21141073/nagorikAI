@@ -79,6 +79,17 @@
     width: 100%;
   }
 }
+.regional-banner {
+  background-color: rgba(16, 185, 129, 0.15); /* Soft accent color */
+  color: var(--text-primary);
+  text-align: center;
+  padding: 8px 15px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  z-index: 50;
+  position: relative;
+  border-bottom: 1px solid var(--border-color);
+}
 
 .consent-banner {
   position: fixed;
@@ -89,8 +100,9 @@
   color: white;
   padding: 15px 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 20px;
   z-index: 9999;
   font-size: 1rem;
   box-shadow: 0 -4px 10px rgba(0,0,0,0.3);

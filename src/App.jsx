@@ -20,6 +20,11 @@ function App() {
           <button className="consent-btn" onClick={() => setShowConsent(false)}>Accept</button>
         </div>
       )}
+      
+      <div className="regional-banner">
+        This platform is exclusively dedicated to serving the citizens and residents of Bangladesh.
+      </div>
+
       <div className="background-shapes">
         <div className="shape shape-1"></div>
         <div className="shape shape-2"></div>
@@ -36,9 +41,6 @@ function App() {
         </section>
       </main>
       <footer className="app-footer">
-        <p style={{ marginBottom: '10px', color: 'var(--text-primary)', fontWeight: '500' }}>
-          This platform is exclusively dedicated to serving the citizens and residents of Bangladesh.
-        </p>
         <p>2026 Copyright © MD. SAYEED IBNE ZAMAN</p>
         <p>Email: <a href="mailto:sayeedibne.devops@gmail.com">sayeedibne.devops@gmail.com</a></p>
       </footer>
