@@ -22,7 +22,8 @@ function App() {
       )}
       
       <div className="regional-banner">
-        This platform is exclusively dedicated to serving the citizens and residents of Bangladesh.
+        This platform is exclusively dedicated to serving the citizens and residents of Bangladesh. <br/>
+        <span style={{ fontWeight: 'normal', fontSize: '0.85em', opacity: 0.9 }}>Supports Bengali, English, and Banglish (Bengali Latin).</span>
       </div>
 
       <div className="background-shapes">
