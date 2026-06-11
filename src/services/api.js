@@ -1,8 +1,15 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const apiKey = import.meta.env.VITE_GEMINI_API_KEY?.trim();
-const genAI = apiKey ? new GoogleGenerativeAI(apiKey) : null;
+let apiKey = import.meta.env.VITE_GEMINI_API_KEY?.trim();
+let genAI = apiKey ? new GoogleGenerativeAI(apiKey) : null;
 const MODEL_NAME = 'gemini-2.5-flash';
+
+export const hasApiKey = () => !!genAI;
+
+export const setApiKey = (key) => {
+  apiKey = key.trim();
+  genAI = new GoogleGenerativeAI(apiKey);
+};
 
 const SYSTEM_PROMPT = `You are Nagorik AI, the National Citizen Services Integration Platform for Bangladesh. 
 Your goal is to simplify access to all government services in Bangladesh. 

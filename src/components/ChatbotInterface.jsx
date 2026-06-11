@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User, Loader2 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
-import { processUserQuery } from '../services/api';
+import { processUserQuery, hasApiKey, setApiKey } from '../services/api';
 import './ChatbotInterface.css';
 
 const ChatbotInterface = ({ initialMessage }) => {
@@ -14,6 +14,8 @@ const ChatbotInterface = ({ initialMessage }) => {
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [isApiKeySet, setIsApiKeySet] = useState(hasApiKey());
+  const [apiKeyInput, setApiKeyInput] = useState('');
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
@@ -64,6 +66,35 @@ const ChatbotInterface = ({ initialMessage }) => {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') handleSend();
   };
+
+  if (!isApiKeySet) {
+    return (
+      <div className="chat-container glass-panel animate-fade-in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2rem', textAlign: 'center', height: '100%' }}>
+        <Bot size={48} className="bot-icon" style={{ marginBottom: '1rem', color: 'var(--primary)' }} />
+        <h2 style={{ marginBottom: '0.5rem' }}>Welcome to Nagorik AI</h2>
+        <p style={{ margin: '1rem 0', color: 'var(--text-secondary)' }}>Please enter your Google Gemini API Key to get started.</p>
+        <input 
+          type="password" 
+          value={apiKeyInput}
+          onChange={(e) => setApiKeyInput(e.target.value)}
+          placeholder="AIzaSy..."
+          style={{ padding: '0.75rem', width: '100%', maxWidth: '300px', borderRadius: '8px', border: '1px solid var(--glass-border)', background: 'rgba(255,255,255,0.05)', color: 'white', marginBottom: '1.5rem' }}
+        />
+        <button 
+          onClick={() => {
+            if (apiKeyInput.trim()) {
+              setApiKey(apiKeyInput);
+              setIsApiKeySet(true);
+            }
+          }}
+          style={{ padding: '0.75rem 1.5rem', borderRadius: '8px', border: 'none', background: 'var(--primary)', color: 'white', cursor: 'pointer', fontWeight: 'bold' }}
+        >
+          Save Key & Start Chatting
+        </button>
+        <p style={{ fontSize: '0.8rem', marginTop: '1.5rem', opacity: 0.5 }}>Your key is only saved in your browser for this session.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="chat-container glass-panel animate-fade-in">
