@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { AuthProvider } from './contexts/AuthContext';
 import Header from './components/Header';
 import ServiceQuickLinks from './components/ServiceQuickLinks';
 import ChatbotInterface from './components/ChatbotInterface';
@@ -13,25 +12,23 @@ function App() {
   };
 
   return (
-    <AuthProvider>
-      <div className="app-layout">
-        <div className="background-shapes">
-          <div className="shape shape-1"></div>
-          <div className="shape shape-2"></div>
-        </div>
-        
-        <Header />
-        
-        <main className="main-content">
-          <aside className="sidebar">
-            <ServiceQuickLinks onServiceClick={handleServiceClick} />
-          </aside>
-          <section className="chat-section">
-            <ChatbotInterface initialMessage={initialQuery} />
-          </section>
-        </main>
+    <div className="app-layout">
+      <div className="background-shapes">
+        <div className="shape shape-1"></div>
+        <div className="shape shape-2"></div>
       </div>
-    </AuthProvider>
+      
+      <Header />
+      
+      <main className="main-content">
+        <aside className="sidebar">
+          <ServiceQuickLinks onServiceClick={handleServiceClick} />
+        </aside>
+        <section className="chat-section">
+          <ChatbotInterface initialMessage={initialQuery} />
+        </section>
+      </main>
+    </div>
   );
 }
 
